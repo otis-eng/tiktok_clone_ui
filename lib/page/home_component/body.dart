@@ -1,6 +1,7 @@
-import 'package:book_user/page/home_component/list_icon.dart';
-import 'package:book_user/page/home_component/video.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
+
+import '../../widgets/loader.dart';
 
 class HomePage_Body extends StatefulWidget {
   const HomePage_Body({Key? key}) : super(key: key);
@@ -10,10 +11,16 @@ class HomePage_Body extends StatefulWidget {
 }
 
 class _HomePage_BodyState extends State<HomePage_Body> {
+  final web_socket_channel = WebSocketChannel.connect(
+    Uri.parse('ws://localhost:3000'),
+  );
   @override
   Widget build(BuildContext context) {
-    return Container(
-        margin: const EdgeInsets.only(bottom: 80),
-        child: Stack(children: [Video_Play(), const List_Audio()]));
+    return StreamBuilder(
+      stream: web_socket_channel.stream,
+      builder: (context, snapshot) {
+        return snapshot.hasData ? Container(color: Colors.black) : Loader;
+      },
+    );
   }
 }
