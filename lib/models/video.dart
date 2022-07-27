@@ -1,53 +1,45 @@
-import 'package:video_player/video_player.dart';
-
 class Video {
-  String id;
-  String user;
-  String userPic;
-  String videoTitle;
-  String songName;
-  String likes;
-  String comments;
-  String url;
+  int? iId;
+  String? videoLink;
+  Like? like;
+  String? audio;
 
-  VideoPlayerController? controller;
+  Video({this.iId, this.videoLink, this.like, this.audio});
 
-  Video(
-      {required this.id,
-      required this.user,
-      required this.userPic,
-      required this.videoTitle,
-      required this.songName,
-      required this.likes,
-      required this.comments,
-      required this.url});
+  Video.fromJson(Map<String, dynamic> json) {
+    iId = json['_id'];
+    videoLink = json['video_link'];
+    like = json['like'] != null ? Like.fromJson(json['like']) : null;
+    audio = json['audio'];
+  }
 
-  Video.fromJson(Map<dynamic, dynamic> json)
-      : id = json['id'],
-        user = json['user'],
-        userPic = json['user_pic'],
-        videoTitle = json['video_title'],
-        songName = json['song_name'],
-        likes = json['likes'],
-        comments = json['comments'],
-        url = json['url'];
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['_id'] = iId;
+    data['video_link'] = videoLink;
+    if (like != null) {
+      data['like'] = like!.toJson();
+    }
+    data['audio'] = audio;
+    return data;
+  }
+}
+
+class Like {
+  int? count;
+  bool? isLike;
+
+  Like({this.count, this.isLike});
+
+  Like.fromJson(Map<String, dynamic> json) {
+    count = json['count'];
+    isLike = json['is_like'];
+  }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['user'] = user;
-    data['user_pic'] = userPic;
-    data['video_title'] = videoTitle;
-    data['song_name'] = songName;
-    data['likes'] = likes;
-    data['comments'] = comments;
-    data['url'] = url;
+    data['count'] = count;
+    data['is_like'] = isLike;
     return data;
-  }
-
-  Future<void> loadController() async {
-    controller = VideoPlayerController.network(url);
-    await controller?.initialize();
-    controller?.setLooping(true);
   }
 }
