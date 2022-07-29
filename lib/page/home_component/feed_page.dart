@@ -18,12 +18,11 @@ class _Feed_PageState extends State<Feed_Page> {
     final video = widget.video;
 
     return Container(
-        margin: const EdgeInsets.only(bottom: 80),
         child: Stack(children: [
-          Page_View(
-            data: video.videoLink,
-          ),
-          List_Audio(video: video)
-        ]));
+      Page_View(
+        data: video.videoLink,
+      ),
+      List_Audio(video: video),
+    ]));
   }
 }

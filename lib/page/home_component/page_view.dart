@@ -21,6 +21,7 @@ class _Page_ViewState extends State<Page_View> {
         setState(() {});
       });
     _controller.play();
+    _controller.setVolume(2.0);
     _controller.setLooping(true);
   }
 

@@ -16,7 +16,7 @@ class HomePage_Body extends StatefulWidget {
 
 class _HomePage_BodyState extends State<HomePage_Body> {
   final web_socket_channel = WebSocketChannel.connect(
-    Uri.parse('ws://localhost:3000'),
+    Uri.parse('ws://192.168.69.46:3000'),
   );
   var data;
 
@@ -35,6 +35,8 @@ class _HomePage_BodyState extends State<HomePage_Body> {
               itemBuilder: (context, index) {
                 return Feed_Page(video: videos[index]);
               });
+        } else if (snapshot.error != null) {
+          return Text(snapshot.error.toString());
         } else {
           return Loader;
         }

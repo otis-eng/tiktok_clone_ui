@@ -18,16 +18,16 @@ class _List_AudioState extends State<List_Audio> {
     return Align(
       alignment: Alignment.bottomRight,
       child: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(10.0),
         child: Container(
             alignment: const Alignment(0, 0),
             decoration: const BoxDecoration(color: Colors.transparent),
-            margin: const EdgeInsets.only(top: 300),
+            margin: const EdgeInsets.only(top: 150),
             width: MediaQuery.of(context).size.width * 0.15,
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.start, children: [
               Render_Icon(
-                  icon: Icons.heart_broken,
+                  icon: Icons.favorite,
                   mount: video.like?.count,
                   color: Colors.red),
               Render_Icon(icon: Icons.comment, mount: video.like?.count),
@@ -52,10 +52,10 @@ class Render_Icon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: const EdgeInsets.only(bottom: 30),
+        margin: const EdgeInsets.only(bottom: 20),
         child: Column(
           children: [
-            Icon(icon, color: color, size: 35.0),
+            Icon(icon, color: color, size: 30.0),
             mount != null ? Text(mount.toString()) : Container()
           ],
         ));

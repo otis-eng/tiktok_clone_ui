@@ -1,16 +1,20 @@
+import 'package:book_user/page/home_component/bottom.dart';
 import 'package:book_user/page/hompeage.dart';
 import 'package:flutter/material.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(
+      const MyApp(),
+    );
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    const title = 'WebSocket Demo';
+    const title = '';
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: title,
       home: MyHomePage(
         title: title,
@@ -40,32 +44,20 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
-        body: const Home()
-        // body: Padding(
-        //   padding: const EdgeInsets.all(20.0),
-        //   child: Column(
-        //     crossAxisAlignment: CrossAxisAlignment.start,
-        //     children: [
-        //       // Form(
-        //       //   child: TextFormField(
-        //       //     controller: _controller,
-        //       //     decoration: const InputDecoration(labelText: 'Send a message'),
-        //       //   ),
-        //       // ),
-        //       // const SizedBox(height: 24),
-        //       StreamBuilder(
-        //         stream: _channel.stream,
-        //         builder: (context, snapshot) {
-        //           // return Text(snapshot.hasData ? '${snapshot.data}' : '');
-        //           return const Home();
-        //         },
-        //       )
-        //     ],
-        //   ),
+        // appBar: AppBar(
+        //   title: Text(widget.title),
         // ),
+
+        body: Stack(
+      children: const [
+        Home(),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: HomePage_Bottom(),
+        )
+      ],
+    )
+
         // floatingActionButton: FloatingActionButton(
         //   onPressed: _sendMessage,
         //   tooltip: 'Send message',
