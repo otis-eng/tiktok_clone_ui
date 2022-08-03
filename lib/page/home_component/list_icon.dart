@@ -47,7 +47,7 @@ class _List_AudioState extends State<List_Audio> {
           height: 50,
           fit: BoxFit.fill,
           imageUrl:
-              'https://res.cloudinary.com/phankieuphuicloud/image/upload/v1650900941/img_shdh1l.png',
+              'https://res.cloudinary.com/phankieuphuicloud/image/upload/v1624610942/samples/bike.jpg',
           placeholder: (context, url) => const CircularProgressIndicator(),
           errorWidget: (context, url, error) => const Icon(Icons.error)),
     );
