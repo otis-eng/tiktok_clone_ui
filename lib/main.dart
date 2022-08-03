@@ -1,7 +1,8 @@
 import 'package:book_user/page/home_component/bottom.dart';
 import 'package:book_user/page/hompeage.dart';
+import 'package:book_user/utils/checkPlatfrom.dart';
+import 'package:book_user/utils/scroll.controller.dart';
 import 'package:flutter/material.dart';
-import 'package:web_socket_channel/web_socket_channel.dart';
 
 void main() => runApp(
       const MyApp(),
@@ -13,10 +14,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const title = '';
-    return const MaterialApp(
+    return MaterialApp(
+      scrollBehavior: AppScrollBehavior(),
       debugShowCheckedModeBanner: false,
       title: title,
-      home: MyHomePage(
+      home: const MyHomePage(
         title: title,
       ),
     );
@@ -37,14 +39,17 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final TextEditingController _controller = TextEditingController();
-  final _channel = WebSocketChannel.connect(
-    Uri.parse('ws://localhost:3000'),
-  );
+  // final _channel = WebSocketChannel.connect(
+  //   Uri.parse('ws://localhost:3000'),
+  // );
 
   @override
   Widget build(BuildContext context) {
+    String os = CheckPlatfrom();
+    print("os$os");
+
     return Scaffold(
-        // appBar: AppBar(
+        // appBar: AppBar
         //   title: Text(widget.title),
         // ),
 
@@ -74,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void dispose() {
-    _channel.sink.close();
+    // _channel.sink.close();
     _controller.dispose();
     super.dispose();
   }

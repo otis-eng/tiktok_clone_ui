@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:book_user/page/home_component/feed_page.dart';
+import 'package:book_user/utils/socket_channel.dart';
 import 'package:flutter/material.dart';
-import 'package:web_socket_channel/web_socket_channel.dart';
 
 import '../../models/video.dart';
 import '../../widgets/loader.dart';
@@ -15,16 +15,20 @@ class HomePage_Body extends StatefulWidget {
 }
 
 class _HomePage_BodyState extends State<HomePage_Body> {
-  final web_socket_channel = WebSocketChannel.connect(
-    Uri.parse('ws://192.168.69.46:3000'),
-  );
-  var data;
+  // var socketChannel = WebSocketChannel.connect(
+  //   Uri.parse('ws://192.168.1.10:3000'),
+  // );
 
+  // final stream = socketChannel.stream.listen((event) {  });
+  var data;
   @override
   Widget build(BuildContext context) {
+    // print("stream" + stream);
+
     return StreamBuilder(
-      stream: web_socket_channel.stream,
+      stream: SocketChannel.listen(),
       builder: (context, snapshot) {
+        print(snapshot.connectionState);
         if (snapshot.hasData) {
           data = json.decode(snapshot.data.toString());
           List<Video> videos =

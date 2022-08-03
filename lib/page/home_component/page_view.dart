@@ -21,7 +21,6 @@ class _Page_ViewState extends State<Page_View> {
         setState(() {});
       });
     _controller.play();
-    _controller.setVolume(2.0);
     _controller.setLooping(true);
   }
 
@@ -37,15 +36,17 @@ class _Page_ViewState extends State<Page_View> {
             _controller.play();
           }
         },
-        child: SizedBox.expand(
-            child: FittedBox(
-          fit: BoxFit.cover,
-          child: SizedBox(
-            width: _controller.value.size.width ?? 0,
-            height: _controller.value.size.height ?? 0,
-            child: VideoPlayer(_controller),
-          ),
-        )),
+        child: AbsorbPointer(
+          child: SizedBox.expand(
+              child: FittedBox(
+            fit: BoxFit.cover,
+            child: SizedBox(
+              width: _controller.value.size.width ?? 0,
+              height: _controller.value.size.height ?? 0,
+              child: VideoPlayer(_controller),
+            ),
+          )),
+        ),
       );
     } else {
       return Loader;
