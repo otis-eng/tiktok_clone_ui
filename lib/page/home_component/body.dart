@@ -15,16 +15,9 @@ class HomePage_Body extends StatefulWidget {
 }
 
 class _HomePage_BodyState extends State<HomePage_Body> {
-  // var socketChannel = WebSocketChannel.connect(
-  //   Uri.parse('ws://192.168.1.10:3000'),
-  // );
-
-  // final stream = socketChannel.stream.listen((event) {  });
   var data;
   @override
   Widget build(BuildContext context) {
-    // print("stream" + stream);
-
     return StreamBuilder(
       stream: SocketChannel.listen(),
       builder: (context, snapshot) {
