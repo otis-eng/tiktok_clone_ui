@@ -1,17 +1,15 @@
-# book_user
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
 # tiktok_clone_ui
+
+This is projects basic connect flutter web with server nodejs by websocket
+
+lib projects used :
+
+- [ web_socket_channel](https://pub.dev/packages/web_socket_channel)
+- [video_player](https://pub.dev/packages/video_player)
+
+
+# Video demon UI
+![Untitled design](https://user-images.githubusercontent.com/71256773/182662244-498394be-2b74-45b6-80a5-8eb9d6b220df.gif)
+
+# Server 
+[link server](https://github.com/otis-eng/tiktok_clone_server.git)
